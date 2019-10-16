@@ -1,0 +1,24 @@
+{
+  "name": "clear-html",
+  "version": "1.0.0",
+  "description": "Clear template for HTML Coding. Gulp.",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "browser-sync": "^2.26.7",
+    "del": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^7.0.1",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-responsive": "^2.14.0",
+    "gulp-sass": "^4.0.2",
+    "bootstrap": "^4.3.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Antelope",
+  "license": "ISC"
+}
