@@ -5,7 +5,12 @@ const
   RSYNC = require('gulp-rsync'),
   CONCAT = require('gulp-concat'),
   AUTOPREFIXER = require('gulp-autoprefixer'),
-  CLEANCSS = require('gulp-clean-css');
+  CLEANCSS = require('gulp-clean-css'),
+  UGLIFY = require('gulp-uglify-es').default,
+  NEWER = require('gulp-newer'),
+  RENAME = require('gulp-rename'),
+  RESPONSIVE = require('gulp-responsive'),
+  DEL = require('del');
 
 // BROWSER-SYNC LOCAL SERVER
 GULP.task('browser-sync', () => {
@@ -17,7 +22,6 @@ GULP.task('browser-sync', () => {
   })
 });
 
-
 // CUSTOM STYLES
 GULP.task('styles', () => {
   return GULP.src('app/sass/**/*.sass')
@@ -28,7 +32,7 @@ GULP.task('styles', () => {
     .pipe(CONCAT('styles.min.css'))
     .pipe(AUTOPREFIXER({
       grid: true,
-      overrideBrowserslist: ['lats 10 versions']
+      overrideBrowserslist: ['last 10 versions'],
     }))
     .pipe(CLEANCSS({
       level: { 1: { specialCommnets: 0 }}
@@ -37,12 +41,23 @@ GULP.task('styles', () => {
     .pipe(BROWSERSYNC.stream())
 });
 
+// SCRIPT
+GULP.task('scripts', () => {
+  return GULP.src([
+    'app/js/_libs.js',
+    'app/js/_custom.js',
+  ])
+    .pipe(CONCAT('script.min.js'))
+    .pipe(UGLIFY())
+    .pipe(GULP.dest('app/js'))
+    .pipe(BROWSERSYNC.reload({ stream: true }))
+});
 
 // WATCH
 GULP.task('watch', () => {
   GULP.watch('app/*.html', GULP.parallel('code'));
   GULP.watch('app/sass/**/*.sass', GULP.parallel('styles'));
-  //GULP.watch(['app/js/_custom.js', 'app/js/_libs.js'], GULP.parallel('scripts'));
+  GULP.watch(['app/js/_custom.js', 'app/js/_libs.js'], GULP.parallel('scripts'));
 });
 
 // CODE & RELOAD
@@ -66,14 +81,42 @@ GULP.task('rsync', () => {
     }))
 });
 
+// IMG
+let quality = 95;
 
+// Produce @1x images
+GULP.task('img-responsive-1x', async function () {
+  return GULP.src('app/img/_src/**/*.{png,jpg,jpeg,webp, raw}')
+    .pipe(NEWER('app/img/@1x'))
+    .pipe(RESPONSIVE({
+      '**/*': { width: '50%', quality: quality }
+    })).on('error', function (e) { console.log(e) })
+    .pipe(RENAME(function (path) {
+      path.extname = path.extname.replace('jpeg', 'jpg')
+    }))
+    .pipe(GULP.dest('app/img/@1x'))
+});
 
+// Produce @2x images
+GULP.task('img-responsive-2x', async function () {
+  return GULP.src('app/img/_src/**/*.{png,jpg,jpeg,webp,raw}')
+    .pipe(NEWER('app/img/@2x'))
+    .pipe(RESPONSIVE({
+      '**/*': { width: '100%', quality: quality }
+    })).on('error', function (e) { console.log(e) })
+    .pipe(RENAME(function (path) {path.extname = path.extname.replace('jpeg', 'jpg')}))
+    .pipe(GULP.dest('app/img/@2x'))
+});
 
-GULP.task('default', GULP.parallel('styles', 'browser-sync', 'watch'));
+GULP.task('img', GULP.series('img-responsive-1x', 'img-responsive-2x', bsReload));
 
+GULP.task('cleanimg', () => {
+  return DEL(['app/img/@*'], { force: true })
+});
 
-// function defaultTask(cb) {
-//   cb();
-// }
-//
-// exports.default = defaultTask;
+function bsReload(done) {
+  BROWSERSYNC.reload();
+  done();
+}
+
+GULP.task('default', GULP.parallel('styles', 'scripts', 'browser-sync', 'watch'));
