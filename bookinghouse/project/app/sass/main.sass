@@ -2,3 +2,134 @@
 @import libs
 @import fonts
 
+body
+  font-family: 'Raleway', sans-serif
+  width: 1260px
+  margin: auto
+  padding: 0
+  height: 100vh
+  display: flex
+  flex-flow: column nowrap
+  justify-content: space-between
+.main-header
+  height: 84px
+  .main-navigation
+    display: flex
+    flex-flow: row nowrap
+    justify-content: space-between
+    align-items: center
+    min-height: 84px
+    .main-header-logo
+      font-weight: 900
+      font-size: 18px
+      color: $colorLogo
+      letter-spacing: 0.1px
+    .site-navigation
+      padding: 0
+      list-style: none
+      display: inline
+      li
+        display: inline
+        margin-right: 25px
+        &:last-child
+          margin-right: 0
+        a
+          font-weight: lighter
+          text-decoration: none
+          cursor: pointer
+          font-size: 14px
+          color: $colorText
+          &:hover
+            color: $colorCurrent
+    .user-navigation
+      padding: 0
+      display: inline
+      list-style: none
+      li
+        display: inline
+        margin-right: 18px
+        &:last-child
+          margin-right: 0
+        a
+          font-weight: lighter
+          text-decoration: none
+          cursor: pointer
+          font-size: 14px
+          color: $colorText
+          &:hover
+            color: $colorCurrent
+.container
+  display: flex
+  flex-flow: column nowrap
+  h1
+    font-weight: 700
+    font-size: 36px
+    color: $colorCurrent
+    width: 900px
+    margin: 60px 0
+  form
+    width: 1260px
+    border: 1px solid #cccccc
+    border-radius: 6px 6px 6px 6px
+    //-webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75)
+    //-moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75)
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75)
+    input[type=text]
+      &:nth-child(1)
+        width: 350px
+        height: 70px
+        padding: 0 0 0 20px
+        border-radius: 6px 0 0 6px
+    select
+      width: 180px
+    input[type=submit]
+      height: 70px
+      background-color: $colorLogo
+      text-transform: uppercase
+      color: white
+      font-weight: bold
+      font-family: 'Raleway', sans-serif
+      width: 140px
+      border-radius: 0 6px 6px 0
+
+.footer-partners
+  margin: 100px 0
+  h2
+    font-weight: 900
+    font-size: 20px
+    color: $colorCurrent
+    width: 1000px
+    margin: 20px 0
+  p
+    color: $colorText
+    font-size: 14px
+  .main-partners-images
+    display: flex
+    flex-flow: row nowrap
+    align-items: center
+    padding: 0
+    list-style: none
+    li
+      margin: 10px 10px
+      color: $colorText
+      &:first-child
+        margin-left: 0
+      a
+        img
+          &:nth-child(1)
+            width: 170px
+            height: 40px
+          &:nth-child(2)
+            width: 190px
+            height: 40px
+          &:nth-child(3)
+            width: 190px
+            height: 40px
+      &:last-child
+        font-size: 14px
+        font-weight: 300
+        img
+          width: 170px
+          height: 30px
+
+

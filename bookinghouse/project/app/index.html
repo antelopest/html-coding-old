@@ -5,44 +5,72 @@
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>Booking house</title>
+  <link href="https://fonts.googleapis.com/css?family=Raleway:100,300,400,500,600,700,800,900&display=swap"
+        rel="stylesheet">
   <link rel="stylesheet" href="css/styles.min.css">
-</head>
 <body>
-  <header class="main-header">
-    <nav class="main-navigation">
-      <a class="main-header-logo">Booking house</a>
+<header class="main-header">
+  <nav class="main-navigation">
+    <a class="main-header-logo">Booking house</a>
 
-      <ul class="site-navigation">
-        <li><a href="#">Поиск жилья</a></li>
-        <li><a href="#">Закладки</a></li>
-        <li><a href="#">Сотрудничество</a></li>
-        <li><a href="#">Поддержка</a></li>
-      </ul>
+    <ul class="site-navigation">
+      <li><a href="#">Поиск жилья</a></li>
+      <li><a href="#">Закладки</a></li>
+      <li><a href="#">Сотрудничество</a></li>
+      <li><a href="#">Поддержка</a></li>
+    </ul>
 
-      <ul class="user-navigation">
-        <li class="signin"><a href="#">Войти в систему</a></li>
-      </ul>
-    </nav>
-  </header>
+    <ul class="user-navigation">
+      <li class="signin"><a href="#">Войти в систему</a></li>
+    </ul>
+  </nav>
+</header>
 
-  <main class="container">
-    <h1>Начните поиск, бронируйте недвижимость и живите комфортно используя наш сервис</h1>
+<main class="container">
+  <h1>Начните поиск, бронируйте недвижимость и живите комфортно используя наш сервис</h1>
 
-    <!-- Форма поиска  -->
-    <form>
-      <input type="text" placeholder="Введите название города или региона">
-      <input type="text" placeholder="Прибытие">
-      <input type="text" placeholder="Выезд">
-      <input type="text" placeholder="Гости">
-      <input type="text" placeholder="Тип объекта">
-      <input type="submit" value="НАЙТИ">
-    </form>
+  <!-- Форма поиска  -->
+  <form>
+    <input type="text" placeholder="Введите название города или региона">
+    <input type="text" placeholder="Прибытие">
+    <input type="text" placeholder="Выезд">
+    <select>
+      <option selected disabled>Гости</option>
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+    <select>
+      <option selected disabled>Тип объекта</option>
+      <option>Комната</option>
+      <option>Квартира</option>
+      <option>Дом</option>
+    </select>
+    <input type="submit" value="НАЙТИ">
+  </form>
 
-    <h2>На нашем сервисе вы найдете лучшие предложения аренды квартир, апартаментов, вилл и коттеджей для отдыха в России и по всему миру.</h2>
-    <p>Мы сравниваем более 17 024 926 предложений по всем миру из более 1000 веб-сайтов с предложениями аренды недвижимости на отпуск</p>
-  </main>
 
-  <script src="js/scripts.min.js"></script>
+</main>
+
+<footer class="footer-partners">
+  <h2>На нашем сервисе вы найдете лучшие предложения аренды квартир, апартаментов, вилл и коттеджей для отдыха в России
+    и по всему миру.</h2>
+  <p>Мы сравниваем более 17 024 926 предложений по всем миру из более 1000 веб-сайтов с предложениями аренды
+    недвижимости на отпуск.</p>
+  <ul class="main-partners-images">
+    <li><a href="https://www.booking.com/index.ru.html" title="booking.com"><img src="img/partners/booking.svg"
+                                                                                 alt="booking.com"></a></li>
+    <li><a href="https://www.airbnb.ru/" title="airbnb.com"><img src="img/partners/airbnb.svg" alt="airbnb.com"></a>
+    </li>
+    <li><a href="https://www.tripadvisor.ru/" title="tripadvisor.com"><img src="img/partners/tripadvisor.svg"
+                                                                           alt="tripadvisor"></a></li>
+    <li>и многие другие партнеры</li>
+  </ul>
+</footer>
+
+<script src="js/scripts.min.js"></script>
 </body>
 </html>
