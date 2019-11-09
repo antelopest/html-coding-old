@@ -19,6 +19,7 @@ body
     justify-content: space-between
     align-items: center
     min-height: 84px
+    user-select: none
     .main-header-logo
       font-weight: 900
       font-size: 18px
@@ -73,15 +74,24 @@ body
     border-radius: 6px 6px 6px 6px
     //-webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75)
     //-moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75)
-    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75)
+    // box-shadow: 0 2px 5px 0 rgba(0,0,0,0.75)
     input[type=text]
+      width: 170px
+      height: 70px
+      padding: 0 0 0 20px
+      border: none
+      border-right: 1px solid $colorFormBorder
       &:nth-child(1)
         width: 350px
         height: 70px
-        padding: 0 0 0 20px
         border-radius: 6px 0 0 6px
+        border: none
+        border-right: 1px solid $colorFormBorder
     select
-      width: 180px
+      width: 171px
+      border: none
+      color: $colorText
+      padding: 0 0 0 20px
     input[type=submit]
       height: 70px
       background-color: $colorLogo
@@ -91,7 +101,8 @@ body
       font-family: 'Raleway', sans-serif
       width: 140px
       border-radius: 0 6px 6px 0
-
+      border: none
+      float: right
 .footer-partners
   margin: 100px 0
   h2
@@ -132,4 +143,12 @@ body
           width: 170px
           height: 30px
 
+
+//@media screen and (max-width: 1200px)
+//
+//@media screen and (max-width: 992px)
+//
+//@media screen and (max-width: 768px)
+//
+//@media screen and (max-width: 576px)
 
