@@ -81,42 +81,4 @@ GULP.task('rsync', () => {
     }))
 });
 
-// // IMG
-// let quality = 95;
-//
-// // Produce @1x images
-// GULP.task('img-responsive-1x', async function () {
-//   return GULP.src('app/img/_src/**/*.{png,jpg,jpeg,webp, raw}')
-//     .pipe(NEWER('app/img/@1x'))
-//     .pipe(RESPONSIVE({
-//       '**/*': { width: '50%', quality: quality }
-//     })).on('error', function (e) { console.log(e) })
-//     .pipe(RENAME(function (path) { // ERROR
-//       path.extname = path.extname.replace('jpeg', 'jpg')
-//     }))
-//     .pipe(GULP.dest('app/img/@1x'))
-// });
-//
-// // Produce @2x images
-// GULP.task('img-responsive-2x', async function () {
-//   return GULP.src('app/img/_src/**/*.{png,jpg,jpeg,webp,raw}')
-//     .pipe(NEWER('app/img/@2x'))
-//     .pipe(RESPONSIVE({
-//       '**/*': { width: '100%', quality: quality }
-//     })).on('error', function (e) { console.log(e) })
-//     .pipe(RENAME(function (path) {path.extname = path.extname.replace('jpeg', 'jpg')}))
-//     .pipe(GULP.dest('app/img/@2x'))
-// });
-//
-// GULP.task('img', GULP.series('img-responsive-1x', 'img-responsive-2x', bsReload));
-//
-// GULP.task('cleanimg', () => {
-//   return DEL(['app/img/@*'], { force: true })
-// });
-//
-// function bsReload(done) {
-//   BROWSERSYNC.reload();
-//   done();
-// }
-
 GULP.task('default', GULP.parallel('styles', 'scripts', 'browser-sync', 'watch'));
